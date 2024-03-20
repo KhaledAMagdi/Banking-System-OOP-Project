@@ -13,6 +13,7 @@ namespace Banking_System_OOP_Project
          * depoist
          * withdraw
          * login
+         * card history
          * transaction feed
          * pointing system
          * deals
