@@ -26,7 +26,6 @@ namespace Banking_System_OOP_Project
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!\n");
-            Console.WriteLine("Hello");
         }
     }
 }
