@@ -17,6 +17,8 @@ namespace Banking_System_OOP_Project
          * transaction feed
          * pointing system
          * deals
+         * loan system
+         * multiple card system
          * */
     }
     internal class Program
