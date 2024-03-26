@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Banking_System_OOP_Project
 {
@@ -21,13 +22,13 @@ namespace Banking_System_OOP_Project
             }
         }
 
-        public card_holder(string firstname, string lastname, int cardnumber, int pin, double balance)
+        public card_holder(string firstname, string lastname, int cardnumber, int pin, double Balance)
         {
             this.firstname = firstname;
             this.lastname = lastname;
             this.cardnumber = cardnumber;
             this.pin = pin;
-            this.balance = Balance;
+            this.Balance = Balance;
         }
 
         public void deposit(double amount)
@@ -77,7 +78,7 @@ namespace Banking_System_OOP_Project
                 Console.WriteLine("Enter amount of deposit: ");
                 double amount = double.Parse(Console.ReadLine());
                 current.deposit(amount);
-                Console.Write("Deposit complete, new balance : " + current.Balance);
+                Console.WriteLine("Deposit complete, new balance : " + current.Balance);
             }
 
             void withdraw(card_holder current)
@@ -103,7 +104,61 @@ namespace Banking_System_OOP_Project
 
             Console.WriteLine("ATM");
             Console.WriteLine("Enter card number");
+            int debit = 0;
+            card_holder currentuser;
 
+            while(true)
+            {
+                try
+                {
+                    debit = int.Parse(Console.ReadLine());
+
+                    currentuser = card_Holders.FirstOrDefault(a => a.cardnumber == debit);
+                    if (currentuser != null)
+                        break;
+                    else
+                        Console.WriteLine("Card not recognized, try again.");
+                }
+                catch { Console.WriteLine("Card not recognized, try again."); }
+            }
+
+            Console.WriteLine("Enter pin");
+            int pin = 0;
+
+            while (true)
+            {
+                try
+                {
+                    pin = int.Parse(Console.ReadLine());
+
+                    if (currentuser.pin == pin)
+                        break;
+                    else
+                        Console.WriteLine("incorrect pin, try again.");
+                }
+                catch { Console.WriteLine("incorrect pin, try again."); }
+            }
+
+            Console.WriteLine("Welcome " + currentuser.firstname);
+            int option = 0;
+
+            do
+            {
+                printoptions();
+                try
+                {
+                    option = int.Parse(Console.ReadLine());
+                }
+                catch { }
+
+                if (option == 1) { deposit(currentuser); }
+                else if (option ==2) { withdraw(currentuser); }
+                else if (option == 3) { show(currentuser); }    
+                else if ( option == 4) { break; }
+                else { option = 0; }    
+            }
+            while (option != 4);
+            Console.WriteLine("Have a nice day!");
         }
     }
 }
