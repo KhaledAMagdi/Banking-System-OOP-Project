@@ -48,9 +48,9 @@ namespace Banking_System_OOP_Project
         }
 
         /* points
-         * depoist
-         * withdraw
-         * login
+         * depoist !
+         * withdraw !
+         * login !
          * card history
          * transaction feed
          * pointing system
