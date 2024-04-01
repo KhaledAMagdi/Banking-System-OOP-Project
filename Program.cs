@@ -4,10 +4,16 @@ using System.Linq;
 
 namespace Banking_System_OOP_Project
 {
-    public class card_holder
+    public class person
     {
         public string firstname { get; set; }
-        public string lastname { get; set; }
+        protected string lastname { get; set; }
+        protected string birthdate { get; set; }
+        protected string nationalid { get; set; }
+    }
+
+    public class card_holder : person 
+    {
         public int cardnumber { get; set; }
         public int pin { get; set; }
         private double balance;
@@ -46,19 +52,19 @@ namespace Banking_System_OOP_Project
                 return true;
             }
         }
-
-        /* points
-         * depoist !
-         * withdraw !
-         * login !
-         * card history
-         * transaction feed
-         * pointing system
-         * deals
-         * loan system
-         * multiple card system
-         */
     }
+
+    /* points
+     * depoist !
+     * withdraw !
+     * login !
+     * card history
+     * transaction feed
+     * pointing system
+     * deals
+     * loan system
+     * multiple card system
+     */
 
     internal class Program
     {
@@ -93,7 +99,7 @@ namespace Banking_System_OOP_Project
 
             void show(card_holder current)
             {
-                Console.WriteLine("Current balance "+current.Balance);
+                Console.WriteLine("Current balance " + current.Balance);
             }
 
             List<card_holder> card_Holders = new List<card_holder>();
@@ -107,7 +113,7 @@ namespace Banking_System_OOP_Project
             int debit = 0;
             card_holder currentuser;
 
-            while(true)
+            while (true)
             {
                 try
                 {
@@ -152,10 +158,10 @@ namespace Banking_System_OOP_Project
                 catch { }
 
                 if (option == 1) { deposit(currentuser); }
-                else if (option ==2) { withdraw(currentuser); }
-                else if (option == 3) { show(currentuser); }    
-                else if ( option == 4) { break; }
-                else { option = 0; }    
+                else if (option == 2) { withdraw(currentuser); }
+                else if (option == 3) { show(currentuser); }
+                else if (option == 4) { break; }
+                else { option = 0; }
             }
             while (option != 4);
             Console.WriteLine("Have a nice day!");
